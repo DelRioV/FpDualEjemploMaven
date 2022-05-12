@@ -1,9 +1,6 @@
 package fp.dual.webservice;
 
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 /**
@@ -24,5 +21,12 @@ public class MyResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getNombre(@QueryParam("name") String nombre) {
         return "Got it " + nombre + "!";
+    }
+
+    @POST
+    @Path("nombre/{name}")
+    @Produces(MediaType.APPLICATION_XML)
+    public String getNombrePorPath(@PathParam("name") String nombre) {
+        return "Got it "+nombre+"!";
     }
 }
